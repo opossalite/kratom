@@ -1,4 +1,4 @@
-mod regular;
-mod hadamard;
+pub mod regular;
+pub mod hadamard;
 
 
