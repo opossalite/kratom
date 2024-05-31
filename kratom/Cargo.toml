@@ -9,7 +9,8 @@ repository = "https://github.com/opossalite/kratom/tree/master/kratom"
 categories = ["algorithms", "science"]
 #keywords = ["NEAT", "machine", "learning", "neural", "CUDA"]
 keywords = ["machine", "learning", "neural"]
-license = "GPL-2.0 OR GPL-3.0"
+#license = "GPL-2.0 OR GPL-3.0"
+license = "GPL-3.0"
 readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
