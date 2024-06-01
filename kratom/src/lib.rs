@@ -1,6 +1,6 @@
 pub mod tools;
 pub mod neuralnets;
-mod multipliers;
+pub mod multipliers;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

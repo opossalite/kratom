@@ -3,14 +3,14 @@ use crate::tools::Multiplier;
 
 
 pub struct RegularMultiplier {}
-impl Multiplier for RegularMultiplier {
-    fn multiply(&mut self, a: &[f32], b: &[f32], sizes: (usize, usize, usize), c: &mut [f32]) {
-        multiply(a, b, sizes, c)
-    }
-}
 impl RegularMultiplier {
     pub fn new() -> Self {
         RegularMultiplier { }
+    }
+}
+impl Multiplier for RegularMultiplier {
+    fn multiply(&mut self, a: &[f32], b: &[f32], sizes: (usize, usize, usize), c: &mut [f32]) {
+        multiply(a, b, sizes, c)
     }
 }
 
