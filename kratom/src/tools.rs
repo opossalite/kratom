@@ -1,7 +1,4 @@
 
-pub trait Multiplier {
-    fn multiply(&mut self, a: &[f32], b: &[f32], sizes: (usize, usize, usize), c: &mut [f32]) -> ();
-}
 
 
 pub fn normalize_vector(a: &mut [f32]) {

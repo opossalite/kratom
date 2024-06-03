@@ -1,14 +1,16 @@
-use crate::tools::Multiplier;
+use super::Multiplier;
 
 
 
 pub struct RegularMultiplier {}
 impl RegularMultiplier {
+    #[inline]
     pub fn new() -> Self {
         RegularMultiplier { }
     }
 }
 impl Multiplier for RegularMultiplier {
+    #[inline]
     fn multiply(&mut self, a: &[f32], b: &[f32], sizes: (usize, usize, usize), c: &mut [f32]) {
         multiply(a, b, sizes, c)
     }

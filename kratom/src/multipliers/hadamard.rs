@@ -1,16 +1,18 @@
 use rand::prelude::*;
-use crate::tools::Multiplier;
+use super::Multiplier;
 
 
 
 /// Modified Hadamard multiplier which dynamically sets the sample size
 pub struct DynamicHadamardMultiplier {}
 impl DynamicHadamardMultiplier {
+    #[inline]
     pub fn new() -> Self {
         DynamicHadamardMultiplier { }
     }
 }
 impl Multiplier for DynamicHadamardMultiplier {
+    #[inline]
     fn multiply(&mut self, a: &[f32], b: &[f32], sizes: (usize, usize, usize), c: &mut [f32]) {
         randomized_hadamard_transform(a, b, sizes, c, sizes.1);
     }
@@ -22,11 +24,13 @@ pub struct HadamardMultiplier {
     pub sample_size: usize,
 }
 impl HadamardMultiplier {
+    #[inline]
     pub fn new(sample_size: usize) -> Self {
         HadamardMultiplier { sample_size }
     }
 }
 impl Multiplier for HadamardMultiplier {
+    #[inline]
     fn multiply(&mut self, a: &[f32], b: &[f32], sizes: (usize, usize, usize), c: &mut [f32]) {
         randomized_hadamard_transform(a, b, sizes, c, self.sample_size);
     }

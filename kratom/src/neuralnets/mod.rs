@@ -1,20 +1,20 @@
 pub mod standard;
 
-use crate::multipliers::regular::RegularMultiplier;
-use self::standard::NeuralNetwork;
 
 
-
-/// Returns a regular 2-hidden layer neural network with a CPU-based matrix multiplier
-#[inline]
-pub fn default(sizes: (usize, usize, usize, usize)) -> NeuralNetwork<RegularMultiplier> {
-    two_layer_regular_cpu(sizes)
+pub enum NeuralNetworkError {
+    BadBufferSize,
 }
 
 
-/// Returns a regular 2-hidden layer neural network with a CPU-based matrix multiplier
-pub fn two_layer_regular_cpu(sizes: (usize, usize, usize, usize)) -> NeuralNetwork<RegularMultiplier> {
-    NeuralNetwork::new(RegularMultiplier::new(), sizes)
+pub trait NeuralNetwork {
+    fn forward(&mut self, input: &[f32]) -> Vec<f32>;
+    fn backward(&mut self, input: &[f32], expected: &[f32]) -> (Vec<f32>, Vec<f32>, Vec<f32>, Vec<f32>, Vec<f32>, Vec<f32>, f32);
+    fn train(&mut self, batch: &[(Vec<f32>, Vec<f32>)], eta: f32) -> Vec<f32>;
+
+    fn forward_buf(&mut self, input: &[f32], output_buf: &mut [f32]) -> Result<(), NeuralNetworkError>;
+    //fn backward_buf(&mut self, input: &[f32], expected: &[f32], grad_bufs: &mut [Vec<f32>], delta_bufs: &mut [Vec<f32>]) -> f32;
+    //fn train_buf(&mut self, batch: &[(Vec<f32>, Vec<f32>)], eta: f32, errors_buf: &mut [f32]);
 }
 
 
